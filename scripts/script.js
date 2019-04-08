@@ -1,5 +1,8 @@
 const cardsColor = ['red', 'red', 'green', 'green', 'blue', 'blue', 'yellow', 'yellow', 'orange', 'orange', 'purple', 'purple', 'greenyellow', 'greenyellow', 'lightsalmon', 'lightsalmon', 'brown', 'brown'];
 
+const startButton = document.querySelector('.welcome button');
+const welcomePage = document.querySelector('.welcome');
+const gamePage = document.querySelector('.box-wrapper');
 let cards = document.querySelectorAll('.box-wrapper>div');
 cards = [...cards];
 const startTime = new Date().getTime();
@@ -7,6 +10,18 @@ let activeCard = '';
 const activeCards = [];
 const gamePairs = cards.length / 2;
 let gameResult = 0;
+const congratulations = document.querySelector('.welcome p');
+const score = document.querySelector('.welcome p:nth-child(2)');
+const playButton = document.querySelector('.welcome button');
+
+
+
+
+const startGame = () => {
+    welcomePage.classList.add('visibility-off');
+    gamePage.classList.remove('visibility-off');
+}
+startButton.addEventListener('click', startGame);
 
 
 const clickCard = function () {
@@ -25,17 +40,25 @@ const clickCard = function () {
                 gameResult++;
                 cards.filter((card) => !card.classList.contains('off'));
                 if (gameResult == gamePairs) {
+                    welcomePage.classList.remove('visibility-off');
+                    gamePage.classList.add('visibility-off');
+                    congratulations.textContent = 'Gratulacje, udało się!!!';
                     const endTime = new Date().getTime();
-                    alert(`Gratulacje, udaøo sié!!! Gra zakoñczona w ${(startTime - endTime)/1000} sekund`);
-                    location.reload;
+                    score.innerHTML = `Twój czas to ${((startTime - endTime)/1000).toFixed(0)} s.`
+                    playButton.textContent = 'Zagraj jeszcze raz';
+                    playButton.addEventListener('click', () => {
+                        location.reload();
+                    })
+
                 }
+
             } else {
                 activeCards.forEach(card => card.classList.add('hidden'));
             }
             activeCard = '';
             activeCards.length = 0;
             cards.forEach(card => card.addEventListener('click', clickCard));
-        }, 700);
+        }, 400);
     }
 }
 
