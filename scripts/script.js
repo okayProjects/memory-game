@@ -15,9 +15,8 @@ const score = document.querySelector('.welcome p:nth-child(2)');
 const playButton = document.querySelector('.welcome button');
 
 
-
-
 const startGame = () => {
+    init();
     welcomePage.classList.add('visibility-off');
     gamePage.classList.remove('visibility-off');
 }
@@ -44,14 +43,12 @@ const clickCard = function () {
                     gamePage.classList.add('visibility-off');
                     congratulations.textContent = 'Gratulacje, udało się!!!';
                     const endTime = new Date().getTime();
-                    score.innerHTML = `Twój czas to ${((startTime - endTime)/1000).toFixed(0)} s.`
+                    score.innerHTML = `Twój czas to ${((startTime - endTime) / 1000).toFixed(0)} s.`
                     playButton.textContent = 'Zagraj jeszcze raz';
                     playButton.addEventListener('click', () => {
                         location.reload();
                     })
-
                 }
-
             } else {
                 activeCards.forEach(card => card.classList.add('hidden'));
             }
@@ -76,4 +73,6 @@ const init = () => {
     }, 1500);
 }
 
-init();
+
+
+// init();
