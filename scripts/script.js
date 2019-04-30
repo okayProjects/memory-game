@@ -14,7 +14,6 @@ const congratulations = document.querySelector('.welcome p');
 const score = document.querySelector('.welcome p:nth-child(2)');
 const playButton = document.querySelector('.welcome button');
 
-
 const startGame = () => {
     init();
     welcomePage.classList.add('visibility-off');

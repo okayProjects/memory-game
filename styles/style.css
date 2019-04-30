@@ -12,7 +12,7 @@
     flex-wrap: wrap;
     align-items: center;
     text-align: center;
-    background-color: rgb(6, 107, 31);
+    background-image: linear-gradient(to right,#000,#ddd, #000);
 }
 
 .welcome p {
@@ -20,13 +20,14 @@
     text-transform: uppercase;
     flex-basis: 100%;
     flex-grow: 1;
-    color: cadetblue;
+    text-shadow: 2px 1px 3px white;
 }
 
 .welcome button {
     flex-basis: 30%;
     font-size: 40px;
     padding: 20px 40px;
+    text-shadow: 2px 1px 3px white;
     border: 1px solid grey;
     background-color: transparent;
     transition: .5s;
@@ -34,9 +35,10 @@
 }
 
 .welcome button:hover {
-    background-color: cadetblue;
+    background-color: #444;
     cursor: pointer;
-    color: #fff;
+    color: #ddd;
+    text-shadow: 0 0 0;
 }
 
 .box-wrapper {
